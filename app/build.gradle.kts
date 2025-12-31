@@ -40,4 +40,6 @@ android {
 }
 
 dependencies {
+    implementation(project(":feature:welcome-screen"))
+    implementation(project(":feature:chat"))
 }
