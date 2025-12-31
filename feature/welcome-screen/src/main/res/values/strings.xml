@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="HostNewChatButton">Host new chat</string>
+    <string name="JoinToChatButton">Join to chat</string>
+</resources>

@@ -23,7 +23,10 @@ fun RootNavigation() {
         backStack = backStack,
         entryProvider = entryProvider {
             entry<RootNavDests.Welcome> {
-                WelcomeScreen()
+                WelcomeScreen(
+                    navigateToHostChat = {},
+                    navigateToJoinChat = {}
+                )
             }
 
             entry<RootNavDests.Chat> {

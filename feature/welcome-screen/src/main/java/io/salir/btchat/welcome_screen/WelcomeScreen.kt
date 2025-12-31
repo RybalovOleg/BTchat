@@ -17,18 +17,30 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun WelcomeScreen() {
-    WelcomeScreenContent()
+fun WelcomeScreen(
+    navigateToHostChat: () -> Unit,
+    navigateToJoinChat: () -> Unit
+) {
+    WelcomeScreenContent(
+        actions = remember {
+            WelcomeScreenActions(
+                onHostNewChat = navigateToHostChat,
+                onJoinToChat = navigateToJoinChat
+            )
+        }
+    )
 }
 
 @Composable
-private fun WelcomeScreenContent() {
+private fun WelcomeScreenContent(actions: WelcomeScreenActions) {
     Scaffold(
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
@@ -51,15 +63,15 @@ private fun WelcomeScreenContent() {
                 ) {
                     Button(
                         modifier = Modifier.fillMaxWidth(),
-                        onClick = {}
-                    ) { Text("Host new chat") }
+                        onClick = actions.onHostNewChat
+                    ) { Text(stringResource(R.string.HostNewChatButton)) }
 
                     Spacer(modifier = Modifier.height(16.dp))
 
                     Button(
                         modifier = Modifier.fillMaxWidth(),
-                        onClick = {}
-                    ) { Text("Join to chat") }
+                        onClick = actions.onJoinToChat
+                    ) { Text(stringResource(R.string.JoinToChatButton)) }
                 }
             }
         }
@@ -69,7 +81,12 @@ private fun WelcomeScreenContent() {
 
 @Composable
 private fun WelcomeScreenPreview() {
-    WelcomeScreenContent()
+    WelcomeScreenContent(
+        actions = WelcomeScreenActions(
+            onHostNewChat = {},
+            onJoinToChat = {}
+        )
+    )
 }
 
 @Preview
