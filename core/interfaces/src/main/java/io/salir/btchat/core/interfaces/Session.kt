@@ -4,7 +4,7 @@ import io.salir.btchat.core.model.Message
 import io.salir.btchat.core.model.MessageBody
 import kotlinx.coroutines.flow.SharedFlow
 
-interface ChatSession {
+interface Session {
 
     val messages: SharedFlow<Message>
 
