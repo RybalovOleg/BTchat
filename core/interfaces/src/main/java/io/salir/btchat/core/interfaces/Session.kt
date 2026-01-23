@@ -9,6 +9,4 @@ interface Session {
     val messages: SharedFlow<Message>
 
     suspend fun sendMessage(message: MessageBody)
-
-    suspend fun close()
 }

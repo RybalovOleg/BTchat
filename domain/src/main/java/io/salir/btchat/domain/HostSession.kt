@@ -15,8 +15,4 @@ class HostSession : Session {
     override suspend fun sendMessage(message: MessageBody) {
         TODO("Not yet implemented")
     }
-
-    override suspend fun close() {
-        TODO("Not yet implemented")
-    }
 }
