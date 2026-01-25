@@ -1,4 +1,4 @@
-package io.salir.btchat.core.model
+package io.salir.btchat.core.model.bluetooth
 
 import kotlin.time.Instant
 
