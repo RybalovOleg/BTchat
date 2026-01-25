@@ -1,6 +1,6 @@
 package io.salir.btchat.core.common
 
-sealed class Progress {
+abstract class Progress {
 
     object Unspecified : Progress()
 }
