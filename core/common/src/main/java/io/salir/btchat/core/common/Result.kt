@@ -1,5 +1,7 @@
 package io.salir.btchat.core.common
 
+import kotlin.collections.map
+
 sealed class Result<out T, out P: Progress> {
 
     object Empty : Result<Nothing, Nothing>()
@@ -17,4 +19,18 @@ sealed class Result<out T, out P: Progress> {
 
 typealias ListResult<T> = Result<List<T>, Progress.WithData<List<T>>>
 
-typealias SimpleDataResult<T> = Result<T, Progress.Unspecified>
+typealias SimpleResult<T> = Result<T, Progress.Unspecified>
+
+fun <T, R> ListResult<T>.map(mapper: (T) -> R): ListResult<R> = when (this) {
+    is Result.Success -> Result.Success(data.map(mapper))
+    is Result.Loading -> Result.Loading(Progress.WithData(progress.data.map(mapper)))
+    is Result.Error -> this
+    is Result.Empty -> this
+}
+
+fun <T, R> SimpleResult<T>.map(mapper: (T) -> R): SimpleResult<R> = when (this) {
+    is Result.Success -> Result.Success(mapper(data))
+    is Result.Loading -> this
+    is Result.Error -> this
+    is Result.Empty -> this
+}

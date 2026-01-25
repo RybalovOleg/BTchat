@@ -4,5 +4,5 @@ abstract class Progress {
 
     object Unspecified : Progress()
 
-    data class WithData<T>(val data: T) : Progress()
+    data class WithData<out T>(val data: T) : Progress()
 }
