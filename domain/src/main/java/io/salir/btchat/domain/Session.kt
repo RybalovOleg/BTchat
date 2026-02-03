@@ -1,4 +1,4 @@
-package io.salir.btchat.core.interfaces
+package io.salir.btchat.domain
 
 import io.salir.btchat.core.model.bluetooth.Message
 import io.salir.btchat.core.model.bluetooth.MessageBody
@@ -8,5 +8,5 @@ interface Session {
 
     val messages: SharedFlow<Message>
 
-    suspend fun sendMessage(message: MessageBody)
+    suspend fun sendMessage(body: MessageBody)
 }
