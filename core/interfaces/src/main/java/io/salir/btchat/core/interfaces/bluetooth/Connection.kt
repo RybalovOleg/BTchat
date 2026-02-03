@@ -23,7 +23,7 @@ sealed interface Connection {
     }
 
     interface Host : Connection {
-        val connectedDevices: StateFlow<List<Device>>
+        val connectedDevices: StateFlow<Set<Device>>
 
         suspend fun sendMessageTo(message: Message, to: Device)
     }
