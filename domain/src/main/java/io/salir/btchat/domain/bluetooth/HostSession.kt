@@ -1,9 +1,8 @@
-package io.salir.btchat.domain
+package io.salir.btchat.domain.bluetooth
 
-import io.salir.btchat.core.interfaces.Connection
+import io.salir.btchat.core.interfaces.bluetooth.Connection
 import io.salir.btchat.core.model.bluetooth.Message
 import io.salir.btchat.core.model.bluetooth.MessageBody
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.MutableSharedFlow

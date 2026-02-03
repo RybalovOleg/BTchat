@@ -1,9 +1,7 @@
-package io.salir.btchat.core.interfaces
+package io.salir.btchat.core.interfaces.bluetooth
 
 import io.salir.btchat.core.common.SimpleResult
 import io.salir.btchat.core.model.bluetooth.Device
-import io.salir.btchat.core.model.bluetooth.Message
-import io.salir.btchat.core.model.bluetooth.MessageBody
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 

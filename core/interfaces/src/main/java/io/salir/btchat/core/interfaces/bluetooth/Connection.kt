@@ -1,4 +1,4 @@
-package io.salir.btchat.core.interfaces
+package io.salir.btchat.core.interfaces.bluetooth
 
 import io.salir.btchat.core.model.bluetooth.Device
 import io.salir.btchat.core.model.bluetooth.Message
