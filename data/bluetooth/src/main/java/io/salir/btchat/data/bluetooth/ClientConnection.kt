@@ -7,7 +7,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 
-class ClientConnection(
+internal class ClientConnection(
     override val thisDevice: Device,
     override val host: Device,
     override val scope: CoroutineScope

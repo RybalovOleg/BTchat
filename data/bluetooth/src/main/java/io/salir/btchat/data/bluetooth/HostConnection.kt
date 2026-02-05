@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class HostConnection(
+internal class HostConnection(
     override val thisDevice: Device,
     override val scope: CoroutineScope
 ) : Connection.Host {
