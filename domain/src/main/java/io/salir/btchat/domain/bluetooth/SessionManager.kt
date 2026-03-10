@@ -3,7 +3,7 @@ package io.salir.btchat.domain.bluetooth
 import io.salir.btchat.core.common.ListResult
 import io.salir.btchat.core.common.Progress
 import io.salir.btchat.core.interfaces.bluetooth.BluetoothRepository
-import io.salir.btchat.core.model.bluetooth.Device
+import io.salir.btchat.core.model.bluetooth.DeviceInfo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -27,7 +27,7 @@ class SessionManager(
         }
     } as StateFlow<SimpleResult<Session>>
 
-    private val _scannedDevices = MutableStateFlow<ListResult<Device>>(Result.Empty)
+    private val _scannedDevices = MutableStateFlow<ListResult<DeviceInfo>>(Result.Empty)
     val scannedDevices = _scannedDevices.asStateFlow()
 
     private val scanMutex = Mutex()
@@ -36,7 +36,7 @@ class SessionManager(
         if (!scanMutex.tryLock()) return
 
         try {
-            var result = Result.Loading<Progress.WithData<List<Device>>>(Progress.WithData(emptyList()))
+            var result = Result.Loading<Progress.WithData<List<DeviceInfo>>>(Progress.WithData(emptyList()))
             _scannedDevices.value = result
 
             bluetoothRepository.scanDevices().collect {
@@ -58,7 +58,7 @@ class SessionManager(
         bluetoothRepository.hostConnection()
     }
 
-    suspend fun connectToSession(device: Device) {
+    suspend fun connectToSession(device: DeviceInfo) {
         bluetoothRepository.connectTo(device)
     }
 }

@@ -1,15 +1,15 @@
 package io.salir.btchat.data.bluetooth
 
 import io.salir.btchat.core.interfaces.bluetooth.Connection
-import io.salir.btchat.core.model.bluetooth.Device
+import io.salir.btchat.core.model.bluetooth.DeviceInfo
 import io.salir.btchat.core.model.bluetooth.Message
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 
 internal class ClientConnection(
-    override val thisDevice: Device,
-    override val host: Device,
+    override val thisDevice: DeviceInfo,
+    override val host: DeviceInfo,
     override val scope: CoroutineScope
 ) : Connection.Client {
 
