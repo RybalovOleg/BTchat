@@ -25,6 +25,11 @@ gradlePlugin {
             implementationClass = "conventions.AndroidLibraryConventionPlugin"
         }
 
+        register("kotlinApplicationConvention") {
+            id = "kotlin-application-convention"
+            implementationClass = "conventions.KotlinApplicationConventionPlugin"
+        }
+
         register("kotlinLibraryConvention") {
             id = "kotlin-library-convention"
             implementationClass = "conventions.KotlinLibraryConventionPlugin"
