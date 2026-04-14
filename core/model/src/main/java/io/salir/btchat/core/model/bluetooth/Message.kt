@@ -1,17 +1,18 @@
 package io.salir.btchat.core.model.bluetooth
 
-import kotlin.time.Instant
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Message(
-    val from: Device,
-    val timestamp: Instant,
+    val fromId: String,
+    val timestamp: Long,
     val body: MessageBody
 )
 
+
+@Serializable
 sealed class MessageBody {
 
-    data class Text(val text: String) : MessageBody()
-
-    data object GetConnectedDevicesList : MessageBody()
-    data class ConnecntedDevicesList(val devices: List<Device>) : MessageBody()
+    @Serializable
+    data class TextMessage(val text: String) : MessageBody()
 }

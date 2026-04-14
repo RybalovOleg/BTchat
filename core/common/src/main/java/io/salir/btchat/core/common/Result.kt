@@ -21,6 +21,7 @@ typealias ListResult<T> = Result<List<T>, Progress.WithData<List<T>>>
 
 typealias SimpleResult<T> = Result<T, Progress.Unspecified>
 
+@JvmName("mapListResult")
 fun <T, R> ListResult<T>.map(mapper: (T) -> R): ListResult<R> = when (this) {
     is Result.Success -> Result.Success(data.map(mapper))
     is Result.Loading -> Result.Loading(Progress.WithData(progress.data.map(mapper)))
@@ -28,6 +29,7 @@ fun <T, R> ListResult<T>.map(mapper: (T) -> R): ListResult<R> = when (this) {
     is Result.Empty -> this
 }
 
+@JvmName("mapSimpleResult")
 fun <T, R> SimpleResult<T>.map(mapper: (T) -> R): SimpleResult<R> = when (this) {
     is Result.Success -> Result.Success(mapper(data))
     is Result.Loading -> this
