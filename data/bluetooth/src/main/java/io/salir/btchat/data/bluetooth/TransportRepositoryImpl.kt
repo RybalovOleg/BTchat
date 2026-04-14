@@ -59,7 +59,7 @@ class TransportRepositoryImpl(
                             else
                                 intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE, BluetoothDevice::class.java)
                         device?.let {
-                            trySend(DeviceInfo(macAdress = it.address))
+                            trySend(DeviceInfo(id = it.address))
                         }
                     }
 
