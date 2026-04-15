@@ -25,8 +25,7 @@ internal class ClientSession(
         SupervisorJob(conn.scope.coroutineContext[Job]) + conn.scope.coroutineContext
     )
 
-    override val myId: String
-        get() = conn.myId
+    override val myId: String get() = conn.myId
 
     private val _messages = MutableSharedFlow<Message>()
     override val messages: SharedFlow<Message> = _messages.asSharedFlow()
