@@ -21,7 +21,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.callbackFlow
 
-class TransportRepositoryImpl(
+class BluetoothTransportRepository(
     private val context: Context,
     private val applicationScope: CoroutineScope
 ) : TransportRepository {
