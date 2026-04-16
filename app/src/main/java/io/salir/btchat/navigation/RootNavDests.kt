@@ -9,5 +9,17 @@ object RootNavDests {
     object Welcome : NavKey
 
     @Serializable
-    object Chat : NavKey
+    object Chats : NavKey
+
+    @Serializable
+    object HostNewChat : NavKey
+
+    @Serializable
+    object ConnectTo : NavKey
+
+    @Serializable
+    data class Chat(val chatId: String) : NavKey
+
+    @Serializable
+    object Settings : NavKey
 }

@@ -11,11 +11,15 @@ import io.salir.btchat.core.common.Result
 import io.salir.btchat.core.common.SimpleResult
 import io.salir.btchat.core.common.map
 import io.salir.btchat.core.interfaces.bluetooth.Connection
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.sync.Mutex
 
 class SessionManager(
-    private val transportRepository: TransportRepository
+    private val transportRepository: TransportRepository,
+    private val scope: CoroutineScope
 ) {
 
     val session: StateFlow<SimpleResult<Session>> = transportRepository.connection.map {
@@ -25,7 +29,7 @@ class SessionManager(
                 is Connection.Host -> HostSession(conn)
             }
         }
-    } as StateFlow<SimpleResult<Session>>
+    }.stateIn(scope, SharingStarted.Eagerly, Result.Empty)
 
     private val _scannedDevices = MutableStateFlow<ListResult<DeviceInfo>>(Result.Empty)
     val scannedDevices = _scannedDevices.asStateFlow()

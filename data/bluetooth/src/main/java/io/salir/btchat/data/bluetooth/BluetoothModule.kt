@@ -1,20 +1,20 @@
-package io.salir.btchat.di
+package io.salir.btchat.data.bluetooth
 
+import android.content.Context
 import io.salir.btchat.core.interfaces.bluetooth.TransportRepository
-import io.salir.btchat.domain.bluetooth.SessionManager
 import kotlinx.coroutines.CoroutineScope
 import org.koin.core.annotation.Module
 import org.koin.core.annotation.Named
 import org.koin.core.annotation.Single
 
 @Module
-class DomainModule {
+class BluetoothModule {
 
     @Single
-    fun sessionManager(
-        transportRepository: TransportRepository,
+    fun transportRepository(
+        context: Context,
         @Named("AppScope") applicationScope: CoroutineScope
-    ): SessionManager {
-        return SessionManager(transportRepository, applicationScope)
+    ): TransportRepository {
+        return BluetoothTransportRepository(context, applicationScope)
     }
 }

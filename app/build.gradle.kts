@@ -41,5 +41,12 @@ android {
 
 dependencies {
     implementation(project(":feature:welcome-screen"))
+    implementation(project(":feature:host-new-chat-screen"))
     implementation(project(":feature:chat"))
+
+    implementation(project(":data:bluetooth"))
+
+    implementation(project(":domain"))
+    implementation(project(":core:interfaces"))
+    implementation(project(":core:common"))
 }
