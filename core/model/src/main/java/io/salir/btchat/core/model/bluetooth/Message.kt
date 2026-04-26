@@ -12,10 +12,7 @@ data class Message(
 
 
 @Serializable
-sealed class MessageBody {
-
-    fun isContentMessage() = this is TextMessageBody // TODO: Сделать покрасивше
-}
+sealed class MessageBody
 
 @Serializable
 data class TextMessageBody(val text: String) : MessageBody()
@@ -36,3 +33,5 @@ class MessageStatusSentBody(
 class MessageStatusDeliveredBody(
     val messageId: String
 ) : MessageBody()
+
+fun MessageBody.isContentMessage() = this is TextMessageBody // TODO: Сделать покрасивше
