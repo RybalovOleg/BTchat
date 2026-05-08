@@ -17,8 +17,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,17 +28,17 @@ fun WelcomeScreen(
     navigateToJoinChat: () -> Unit
 ) {
     WelcomeScreenContent(
-        actions = remember {
-            WelcomeScreenActions(
-                onHostNewChat = navigateToHostChat,
-                onJoinToChat = navigateToJoinChat
-            )
+        sendIntent = { intent ->
+            when (intent) {
+                is HostNewSessionIntent -> navigateToHostChat()
+                is JoinToSessionIntent -> navigateToJoinChat()
+            }
         }
     )
 }
 
 @Composable
-private fun WelcomeScreenContent(actions: WelcomeScreenActions) {
+private fun WelcomeScreenContent(sendIntent: (Intent) -> Unit) {
     Scaffold(
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
@@ -63,15 +61,15 @@ private fun WelcomeScreenContent(actions: WelcomeScreenActions) {
                 ) {
                     Button(
                         modifier = Modifier.fillMaxWidth(),
-                        onClick = actions.onHostNewChat
-                    ) { Text(stringResource(R.string.HostNewChatButton)) }
+                        onClick = { sendIntent(HostNewSessionIntent()) }
+                    ) { Text(stringResource(R.string.HostNewSessionButton)) }
 
                     Spacer(modifier = Modifier.height(16.dp))
 
                     Button(
                         modifier = Modifier.fillMaxWidth(),
-                        onClick = actions.onJoinToChat
-                    ) { Text(stringResource(R.string.JoinToChatButton)) }
+                        onClick = { sendIntent(JoinToSessionIntent()) }
+                    ) { Text(stringResource(R.string.JoinToSessionButton)) }
                 }
             }
         }
@@ -82,10 +80,9 @@ private fun WelcomeScreenContent(actions: WelcomeScreenActions) {
 @Composable
 private fun WelcomeScreenPreview() {
     WelcomeScreenContent(
-        actions = WelcomeScreenActions(
-            onHostNewChat = {},
-            onJoinToChat = {}
-        )
+        sendIntent = {
+
+        }
     )
 }
 

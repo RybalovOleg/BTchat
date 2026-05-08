@@ -9,7 +9,6 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
-import io.salir.btchat.core.common.Result
 import io.salir.btchat.domain.bluetooth.SessionManager
 import io.salir.btchat.feature.chat.ChatScreen
 import io.salir.btchat.welcome_screen.WelcomeScreen

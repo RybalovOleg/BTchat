@@ -8,7 +8,10 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:common"))
     implementation(project(":core:model"))
     implementation(project(":core:interfaces"))
+    implementation(project(":core:security"))
+    implementation(project(":core:util"))
+
+    implementation(libs.kotlinx.serialization.json)
 }

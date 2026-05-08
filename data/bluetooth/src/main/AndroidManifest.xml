@@ -12,10 +12,4 @@
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
 
-
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-
-    <!-- SDK >= 34 -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
-
 </manifest>

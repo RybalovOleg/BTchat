@@ -1,16 +1,16 @@
 package io.salir.btchat.domain.bluetooth
 
-import io.salir.btchat.core.common.ListResult
-import io.salir.btchat.core.common.Progress
-import io.salir.btchat.core.interfaces.bluetooth.TransportRepository
-import io.salir.btchat.core.model.bluetooth.DeviceInfo
+import io.salir.btchat.core.model.result.ListResult
+import io.salir.btchat.core.model.result.Progress
+import io.salir.btchat.core.interfaces.TransportRepository
+import io.salir.btchat.core.model.connection.DeviceInfo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import io.salir.btchat.core.common.Result
-import io.salir.btchat.core.common.SimpleResult
-import io.salir.btchat.core.common.map
-import io.salir.btchat.core.interfaces.bluetooth.Connection
+import io.salir.btchat.core.model.result.Result
+import io.salir.btchat.core.model.result.SimpleResult
+import io.salir.btchat.core.model.result.map
+import io.salir.btchat.core.interfaces.Connection
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map

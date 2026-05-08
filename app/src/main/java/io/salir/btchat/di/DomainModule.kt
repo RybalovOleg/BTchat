@@ -1,6 +1,6 @@
 package io.salir.btchat.di
 
-import io.salir.btchat.core.interfaces.bluetooth.TransportRepository
+import io.salir.btchat.core.interfaces.TransportRepository
 import io.salir.btchat.domain.bluetooth.SessionManager
 import kotlinx.coroutines.CoroutineScope
 import org.koin.core.annotation.Module

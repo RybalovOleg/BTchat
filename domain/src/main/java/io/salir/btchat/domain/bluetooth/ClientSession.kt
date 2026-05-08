@@ -1,10 +1,10 @@
 package io.salir.btchat.domain.bluetooth
 
-import io.salir.btchat.core.interfaces.bluetooth.Connection
-import io.salir.btchat.core.model.bluetooth.Message
-import io.salir.btchat.core.model.bluetooth.MessageBody
-import io.salir.btchat.core.model.bluetooth.MessageStatusDeliveredBody
-import io.salir.btchat.core.model.bluetooth.MessageStatusSentBody
+import io.salir.btchat.core.interfaces.Connection
+import io.salir.btchat.core.model.connection.Message
+import io.salir.btchat.core.model.connection.MessageBody
+import io.salir.btchat.core.model.connection.MessageStatusDeliveredBody
+import io.salir.btchat.core.model.connection.isContentMessage
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -53,9 +53,9 @@ internal class ClientSession(
     }
 
     private suspend fun processMessage(message: Message) {
-        if (message.body.isContentMessage()) {
+        if (message.isContentMessage()) {
             conn.sendMessageTo(
-                body = MessageStatusDeliveredBody(message.id),
+                body = MessageStatusDeliveredBody(message.id, message.deliveredAt ?: throw IllegalStateException()),
                 toId = message.fromId
             )
         }

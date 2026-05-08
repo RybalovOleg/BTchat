@@ -48,5 +48,5 @@ dependencies {
 
     implementation(project(":domain"))
     implementation(project(":core:interfaces"))
-    implementation(project(":core:common"))
+
 }
